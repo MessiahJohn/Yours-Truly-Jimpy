@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Love Proposal Program</title>
+</head>
+<body>
+  <h1>Will you go on a date with me?</h1>
+  <button onclick="handleYes()">Yes</button>
+  <button onclick="handleNo()">No</button>
+
+  <div id="dogGif"></div>
+
+  <script>
+    function handleYes() {
+      const emailAddress = 'mj.love.jenica@gmail.com'; // Replace with the specific email address
+      const subject = 'Date Confirmation';
+      const message = 'Yes, I would love to go on a date with you!';
+
+      const encodedSubject = encodeURIComponent(subject);
+      const encodedMessage = encodeURIComponent(message);
+      const mailtoLink = `mailto:${emailAddress}?subject=${encodedSubject}&body=${encodedMessage}`;
+
+      window.location.href = mailtoLink;
+      showDogGif('happy'); // Show the happy dog GIF
+
+      // Close the program
+      setTimeout(() => {
+        window.close();
+      }, 5000);
+    }
+
+    function handleNo() {
+      alert('Sorry to hear that. Have a great day!');
+      showDogGif('sad'); // Show the sad dog GIF
+
+      // Close the program
+      setTimeout(() => {
+        window.close();
+      }, 5000);
+    }
+
+    function showDogGif(mood) {
+      const dogGifContainer = document.getElementById('dogGif');
+      const dogGif = document.createElement('img');
+      
+      if (mood === 'happy') {
+        dogGif.src = 'https://media.giphy.com/media/k2Da0Uzaxo9xe/giphy.gif'; // Replace with the URL of the happy dog GIF
+        dogGif.alt = 'Happy Dog';
+      } else if (mood === 'sad') {
+        dogGif.src = 'https://media.giphy.com/media/ePbtplyRUqBCdKwd43/giphy.gif'; // Replace with the URL of the sad dog GIF
+        dogGif.alt = 'Sad Dog';
+      }
+
+      dogGifContainer.appendChild(dogGif);
+    }
+  </script>
+</body>
+</html>
